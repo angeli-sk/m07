@@ -18,6 +18,8 @@ FLAGS = -Wall -Werror -Wextra
 
 SRC = Array.cpp
 
+INCLUDES = Array.hpp
+
 #✧･ﾟ: *✧･ﾟ:*  *:･ﾟ✧*:･ﾟ✧✧･ *✧･ﾟ:* COLORS ✧*:･ﾟ✧: *✧･ﾟ:* ✧ *:･ﾟ✧*:･ﾟ✧✧･ﾟ: *✧･ﾟ:#
 
 ORANGE	= 	\033[38;5;208m
@@ -29,7 +31,7 @@ BLUE		= \033[38;5;75m
 
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(SRC) $(INCLUDES)
 	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
 	@echo "$(ORANGE)\n✧･ﾟ: *✧･ﾟ:*  *:･ﾟ✧*:･ﾟ✧✧･ *✧･ﾟ:*✧✧*:･ﾟ✧✧･"
 	@echo "$(BLUE)✨\t    ᴄᴏᴍᴘɪʟᴀᴛɪᴏɴ ᴅᴏɴᴇ!\t\t✨"
