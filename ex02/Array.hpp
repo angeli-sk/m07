@@ -31,6 +31,7 @@ class Array
 
 		Array(Array const & copy)
 		{
+			this->_array = NULL;
 			*this = copy;
 		}
 
