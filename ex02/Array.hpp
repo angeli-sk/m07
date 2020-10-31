@@ -21,18 +21,12 @@ class Array
 		T	*_array;
 		unsigned int	_size;
 	public:
-		Array()
-		{
-			this->_array = new T[0];
-			this->_size = 0;
-		}
+		Array() : _array(NULL), _size(0){}
 
-		Array(unsigned int n)
+		Array(unsigned int n) : _array(NULL), _size(n)
 		{
-			this->_size = n;
-			if (n == 0)
-			throw std::exception();
-			this->_array = new T[n];
+			if (n > 0)
+				this->_array = new T[n];
 		}
 
 		Array(Array const & copy)
@@ -42,12 +36,19 @@ class Array
 
 		Array&	operator=(Array const & copy)
 		{
-			this->_size = copy._size;
-			delete[] this->_array;
-			this->_array = new T[this->_size];
-			for(unsigned int i =0; i < this->_size; i++)
+			if (this != &copy)
 			{
-				this->_array[i] = copy._array[i];
+				this->_size = copy._size;
+				delete[] this->_array;
+				this->_array = NULL;
+				if (this->_size > 0)
+				{
+					this->_array = new T[this->_size];
+					for(unsigned int i =0; i < this->_size; i++)
+					{
+						this->_array[i] = copy._array[i];
+					}
+				}
 			}
 			return *this;
 		}
